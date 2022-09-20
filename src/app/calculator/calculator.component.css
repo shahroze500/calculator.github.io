@@ -1,0 +1,19 @@
+mat-slider {
+    width: 100%;
+  }
+mat-slider-thumb-label-text {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  color: black !important;
+}
+.form-background{
+  background-color: #f1f1f1;
+
+}
+.calculator-filter{
+  background-color: white;
+  padding: 50px;
+  border-radius: 10px;
+}
+

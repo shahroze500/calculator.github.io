@@ -1,0 +1,182 @@
+<div class="container form-background">
+    <div class="row p-5">
+        <div class="col-md-6 p-5">
+            <div class="calculator-filter"> 
+            <div class="p-5 pb-0 pt-0">
+            <h4>What is your current Inventory Service Level?</h4>
+            <mat-slider  thumbLabel
+            tickInterval="0"
+            [displayWith]="percentagelable"
+            step="1"
+            min="75"
+            max="100"
+            [value]="inventioryServiceValue"
+            aria-label="units"></mat-slider>
+            <div class="row justify-content-between">
+                <div class="col-4">
+                    75%
+                </div>
+                <div class="col-4 text-end">
+                  100%
+                </div>
+              </div>
+            </div>
+            <hr>
+            <div class="p-5 pb-0 pt-0">
+                <h4>What is your yearly sales?</h4>
+                <mat-slider  thumbLabel
+                [displayWith]="formatLabel"
+                (change)="yearlySale($event)"
+                tickInterval="0"
+                step="1"yearlySale
+                min="1000000"
+                max="1000000000"
+                [value]="yearlySaleValue"
+                aria-label="units"></mat-slider>
+                <div class="row justify-content-between">
+                    <div class="col-4">
+                        $1M
+                    </div>
+                    <div class="col-4 text-end">
+                        $1B
+                    </div>
+                  </div>
+            </div>
+            <hr>
+            <div class="p-5 pb-0 pt-0">
+                <h4>What is your average inventory value?</h4>
+                <mat-slider  thumbLabel
+                
+                (change)="inventory($event)"
+                [displayWith]="formatLabel"
+                tickInterval="0"
+                step="1"
+                min="1000000"
+                max="1000000000"
+                [value]="averageInventoryValue"
+                
+                aria-label="units"></mat-slider>
+                <div class="row justify-content-between">
+                    <div class="col-4">
+                        $1M
+                    </div>
+                    <div class="col-4 text-end">
+                        $1B
+                    </div>
+                  </div>
+            </div>
+            <hr>
+            <div class="p-5 pb-0 pt-0">
+                
+                <h4>What is your average gross margin?</h4>
+                <mat-slider  thumbLabel
+                tickInterval="0"
+                [displayWith]="percentagelable"
+                (change)="grossMargin($event)"
+                step="1"
+                min="5"
+                max="50"
+                [value]="grossMarginValue"
+                aria-label="units"></mat-slider>
+                <div class="row justify-content-between">
+                    <div class="col-4">
+                        5%
+                    </div>
+                    <div class="col-4 text-end">
+                        50%
+                    </div>
+                  </div>
+            </div>
+            <hr>
+            <div class="p-5 pb-0 pt-0">
+                <h4>How many people are employed in the purchasing/forecasting/planning department?</h4>
+                
+                <form [formGroup]="myForm">
+                    <input class="form-control" type="number" formControlName="employed" placeholder="Your name" (keyup)="efficiencySavingsFormula()">
+                </form>
+            </div>
+            <hr>
+            <div class="p-5 pb-0 pt-0">
+                <h4>What is their average salary with benefits?</h4>
+                <mat-slider  thumbLabel 
+                [displayWith]="dollor"
+                (change)="averageSalary($event)"
+                tickInterval="0"
+                step="1000"
+                min="40000"
+                max="120000"
+                [value]="averageSalaryValue"
+                aria-label="units"></mat-slider>
+                <div class="row justify-content-between">
+                    <div class="col-4">
+                        $40,000
+                    </div>
+                    <div class="col-4 text-end">
+                        $120,000
+                    </div>
+                  </div>
+            </div>
+            
+            <hr>
+            <div class="p-5 pb-0 pt-0">
+                <h4>How much waste/obsolete inventory last year?</h4>
+                <mat-slider  thumbLabel
+                [displayWith]="percentagelable2"
+                (change)="waste($event)"
+                tickInterval="0"
+                step="0.20"
+                min="0.25"
+                max="4"
+                [value]="wasteValue"
+                aria-label="units"></mat-slider>
+                <div class="row justify-content-between">
+                    <div class="col-4">
+                        0.25%
+                    </div>
+                    <div class="col-4 text-end">
+                        4%
+                    </div>
+                  </div>
+            </div>
+            <hr>
+            </div>
+        </div>
+        
+        <div class="col-md-6 p-5">
+            <div class="calculator-filter"> 
+            <div class="p-5 pb-0 pt-0">
+            <p>Your estimated </p>
+            <h1>Yearly Benefits with Slimstock</h1>
+            <h1>${{allSum}}</h1>
+            <hr>
+          
+            <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [xaxis]="chartOptions.xaxis"
+            [title]="chartOptions.title"
+          ></apx-chart>
+            <div class="p-5 pb-0 pt-0">
+                <h5>Increased Service Levels</h5>
+                <p>${{serviceLevelResult}}</p>
+            </div>
+            <hr>
+            <div class="p-5 pb-0 pt-0">
+                <h5>Efficiency Savings</h5>
+                <p>${{efficiencySavings}}</p>
+            </div>
+            <hr>
+            <div class="p-5 pb-0 pt-0">
+                
+                <h5>Reduction in Obsolete Inventory</h5>
+                <p>${{reductionInventory}}</p>
+            </div>
+            <hr>
+            </div>
+
+            <div class="mt-5 p-5">
+                <app-modal></app-modal>
+            </div>
+        </div>
+    </div>
+</div>
